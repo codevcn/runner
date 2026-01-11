@@ -1,0 +1,5 @@
+# List all installed packages globally
+npm list -g --depth=0
+
+# Code python open local environment pannel (for user)
+subprocess.run(["rundll32.exe", "sysdm.cpl,EditEnvironmentVariables"], shell=True)

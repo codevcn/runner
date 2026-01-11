@@ -1,0 +1,1 @@
+py D:\D-Documents\custom-commands\runner\src\runner.py %*
