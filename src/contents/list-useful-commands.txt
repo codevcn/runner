@@ -3,3 +3,12 @@ npm list -g --depth=0
 
 # Code python open local environment pannel (for user)
 subprocess.run(["rundll32.exe", "sysdm.cpl,EditEnvironmentVariables"], shell=True)
+
+# Command to find processes using a specific port (e.g., port 3000)
+netstat -ano | findstr :4000
+
+# Find the PID of a process by its name (replace <process_name> with the actual name)
+tasklist | findstr <process_name>
+
+# Kill a process by its PID (replace <PID> with the actual process ID), forcefully
+taskkill /PID <PID> /F
