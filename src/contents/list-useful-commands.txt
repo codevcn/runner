@@ -7,8 +7,22 @@ subprocess.run(["rundll32.exe", "sysdm.cpl,EditEnvironmentVariables"], shell=Tru
 # Command to find processes using a specific port (e.g., port 3000)
 netstat -ano | findstr :4000
 
-# Find the PID of a process by its name (replace <process_name> with the actual name)
-tasklist | findstr <process_name>
+# Find the process by its PID (replace <process_name> with the actual name)
+tasklist /FI "PID eq 12345"
 
 # Kill a process by its PID (replace <PID> with the actual process ID), forcefully
 taskkill /PID <PID> /F
+
+# Kill a process by its name (replace <process_name> with the actual name), forcefully
+# Example: taskkill /IM chrome.exe /F
+taskkill /IM <process_name> /F
+
+# Open new powershell tab in windows terminal
+wt -w 0 nt -p "Win PowerShell 1" ; wt -w 0 nt -p "Win PowerShell 2"
+
+# Open new cmd tab in windows terminal (then run new command)
+start cmd /k "cd express-server && dev.cmd" (if previous command is successful then run next command)
+npm run dev
+## Or
+start cmd /k "cd express-server & dev.cmd" (regardless of previous command success then run next command)
+npm run dev
