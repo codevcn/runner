@@ -15,6 +15,8 @@ RUNNER_TYPE_PRINT = "print"
 RUNNER_TYPE_GIT = "git"
 
 # --- Actions ---
+# google drive
+RUNNER_GDRIVE = "gdrive"
 # open
 RUNNER_OPEN_ENV = "env"
 # code
@@ -59,6 +61,20 @@ RUNNER_ROOT_FOLDER = os.getenv("ROOT_FOLDER_PATH")
 RUNNER_USEFUL_CODES_PREFIX_PATH = f"{RUNNER_ROOT_FOLDER}/src/useful-codes/"
 
 # --- Functions ---
+
+
+def gdrive_execute(gdrive_command, *args):
+    subprocess.run(
+        [
+            "python",
+            "D:/D-Documents//custom-commands/runner/src/runner_gdrive.py",
+            gdrive_command,
+        ]
+        + list(args),
+        check=True,
+        shell=True,
+    )
+    sys.exit(0)
 
 
 def print_content(content_filename):
@@ -243,14 +259,17 @@ if __name__ == "__main__":
             help="Action (e.g. env, ws, test, commit, os, stts, curl, dir, test-bat, unikey)",
         )
         parser.add_argument(
+            "value",
+            nargs="?",
+            default=None,
+            help="Value (e.g. <remote-name> for gdrive set-remote)",
+        )
+        parser.add_argument(
             "-m",
             "--message",
             default=None,
             dest="user_message",
             help="User message (for git commit)",
-        )
-        parser.add_argument(
-            "-v", "--value", default=None, dest="value", help="Value (if any)"
         )
         parser.add_argument(
             "-c",
@@ -272,9 +291,9 @@ if __name__ == "__main__":
 
         type_included = args.type
         action_included = args.action
+        value_included = args.value
         user_message_included = args.user_message
         cursor_IDE_included = args.cursor_IDE
-        value_included = args.value
         powershell_only_included = args.powershell_only
 
         if type_included == None:
@@ -282,6 +301,8 @@ if __name__ == "__main__":
                 print_help()
             else:
                 raise Exception(RUNNER_WARNING_TYPE_MISSING)
+        elif type_included == RUNNER_GDRIVE:
+            gdrive_execute(action_included, value_included)
         elif type_included == RUNNER_TYPE_CODE:
             if action_included == None:
                 open_runner_files_in_vscode("cs" if cursor_IDE_included else "code")
