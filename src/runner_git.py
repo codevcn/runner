@@ -24,7 +24,7 @@ import subprocess
 import os
 from dotenv import load_dotenv
 
-load_dotenv(dotenv_path="D:/D-Documents/runner/.env")
+load_dotenv(dotenv_path="D:/D-Documents/TOOLs/runner/.env")
 
 RUNNER_GIT_TYPE = "commit"
 RUNNER_GIT_REMOTE = "remote"

@@ -26,3 +26,7 @@ npm run dev
 ## Or
 start cmd /k "cd express-server & dev.cmd" (regardless of previous command success then run next command)
 npm run dev
+
+# Git remove item from tracking but keep it locally
+# Example: git rm --cached node_modules, git rm --cached .env
+git rm --cached <file_or_folder_name>

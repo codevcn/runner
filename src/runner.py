@@ -4,7 +4,7 @@ import subprocess
 import sys
 from dotenv import load_dotenv
 
-load_dotenv(dotenv_path="D:/D-Documents/custom-commands/runner/.env")
+load_dotenv(dotenv_path="D:/D-Documents/TOOLs/runner/.env")
 
 # --- Static parameters (constants) ---
 RUNNER_STATUS = "OK"
@@ -67,7 +67,7 @@ def gdrive_execute(gdrive_command, *args):
     subprocess.run(
         [
             "python",
-            "D:/D-Documents//custom-commands/runner/src/runner_gdrive.py",
+            f"{RUNNER_ROOT_FOLDER}/src/runner_gdrive.py",
             gdrive_command,
         ]
         + list(args),
@@ -81,7 +81,7 @@ def print_content(content_filename):
     subprocess.run(
         [
             "python",
-            "D:/D-Documents//custom-commands/runner/src/runner_print_content.py",
+            f"{RUNNER_ROOT_FOLDER}/src/runner_print_content.py",
             content_filename,
         ],
         check=True,
@@ -119,7 +119,7 @@ def print_useful_commands():
 def run_git_command(git_type, user_message=None):
     args = [
         "python",
-        "D:/D-Documents//custom-commands/runner/src/runner_git.py",
+        f"{RUNNER_ROOT_FOLDER}/src/runner_git.py",
         git_type,
     ]
     if user_message:
@@ -132,13 +132,13 @@ def run_git_command(git_type, user_message=None):
 
 
 def open_runner_file_in_system_folder():
-    subprocess.run(["start", "D:/D-Documents//custom-commands/runner"], shell=True)
+    subprocess.run(["start", f"{RUNNER_ROOT_FOLDER}"], shell=True)
     sys.exit(0)
 
 
 def print_statuses_info():
     subprocess.run(
-        ["python", "D:/D-Documents//custom-commands/runner/src/runner_statuses.py"],
+        ["python", f"{RUNNER_ROOT_FOLDER}/src/runner_statuses.py"],
         check=True,
         shell=True,
     )
@@ -151,7 +151,7 @@ def print_help():
 
 def print_cURL():
     subprocess.run(
-        ["python", "D:/D-Documents//custom-commands/runner/src/runner_cURL.py"],
+        ["python", f"{RUNNER_ROOT_FOLDER}/src/runner_cURL.py"],
         check=True,
         shell=True,
     )
@@ -171,7 +171,7 @@ def open_vscode_workspaces_in_system_folder():
 def open_working_vscode(ide_prefix, powershell_only=False):
     cmd_args = [
         "python",
-        "D:/D-Documents//custom-commands/runner/src/runner_main_ws.py",
+        f"{RUNNER_ROOT_FOLDER}/src/runner_main_ws.py",
         ide_prefix or "code",
     ]
     if powershell_only:
@@ -197,7 +197,7 @@ def print_vscode_workspaces(workspace_path):
 
 
 def open_runner_files_in_vscode(ide_prefix):
-    subprocess.run([ide_prefix, "D:/D-Documents//custom-commands/runner"], shell=True)
+    subprocess.run([ide_prefix, f"{RUNNER_ROOT_FOLDER}"], shell=True)
     sys.exit(0)
 
 

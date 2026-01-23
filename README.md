@@ -25,9 +25,9 @@ Công cụ dòng lệnh dựa trên Python để tự động hóa các tác v�
    ```bash
    pip install -r requirements.txt
    ```
-3. Tạo file `.env` trong `D:/D-Documents/custom-commands/runner/` với nội dung:
+3. Tạo file `.env` trong `D:/D-Documents/TOOLs/runner/` với nội dung:
    ```env
-   ROOT_FOLDER_PATH=D:/D-Documents/custom-commands/runner
+   ROOT_FOLDER_PATH=D:/D-Documents/TOOLs/runner
    ```
 4. Thêm thư mục runner vào biến môi trường PATH để sử dụng lệnh `runner` toàn cục
 
@@ -160,7 +160,7 @@ runner/
 
 Công cụ sử dụng file `.env` để cấu hình. Tạo file tại:
 ```
-D:/D-Documents/custom-commands/runner/.env
+D:/D-Documents/TOOLs/runner/.env
 ```
 
 Các biến môi trường bắt buộc:
